@@ -83,7 +83,7 @@ def update_drop_estacoes(click,estado,tipo_evento):
         if click is not None:
             data = click['points'][0]['text'][:10]
             est = gr.le_dados('estacoes',tipo_evento,estado,data=data)
-            estacoes = pd.read_csv('dados/estacoes.csv')
+            estacoes = pd.read_csv('https://raw.githubusercontent.com/mahideia/extremaera/master/dados/estacoes.csv')
             estacoes = estacoes[estacoes.codigo.isin(est)]
             estacoes['nome'] = estacoes['codigo'] + ' - ' +estacoes.estacao
             dd_estacoes = []
