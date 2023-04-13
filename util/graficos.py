@@ -50,7 +50,7 @@ def plota_estados(Brazil,df, estado):
 
 
 def plot_barras_temperatura_precipitacao(estado):
-    df = pd.read_csv('dados/dados_base.csv',header=None, low_memory=False)
+    df = pd.read_csv('https://raw.githubusercontent.com/mahideia/extremaera/master/dados/dados_base.csv',header=None, low_memory=False)
     df.columns=['data','sigla','evento','estacao','criterio']
     df.data = pd.to_datetime(df.data)
     df = df[(df.data.dt.year >= 1960)  & (df.data.dt.year < 2021)]
@@ -143,7 +143,7 @@ def plot_barras_temperatura_precipitacao(estado):
 
 def le_dados(tipo,evento, estado,ano=None,data=None):
     if tipo == 'dados_base':
-        df = pd.read_csv('dados/dados_base.csv',header=None, low_memory=False)
+        df = pd.read_csv('https://raw.githubusercontent.com/mahideia/extremaera/master/dados/dados_base.csv',header=None, low_memory=False)
         df.columns=['data','sigla','evento','estacao','criterio']
         df.data = pd.to_datetime(df.data)
         df = df[(df.data.dt.year >= 1960)  & (df.data.dt.year < 2021)]
@@ -154,7 +154,7 @@ def le_dados(tipo,evento, estado,ano=None,data=None):
         dados = dados[dados.estacao>0]
         dados = dados.resample('Y',on='data').estacao.count().reset_index()
     if tipo=='calendario':
-        df = pd.read_csv('dados/dados_base.csv',header=None, low_memory=False)
+        df = pd.read_csv('https://raw.githubusercontent.com/mahideia/extremaera/master/dados/dados_base.csv',header=None, low_memory=False)
         df.columns=['data','sigla','evento','estacao','criterio']
         df.data = pd.to_datetime(df.data)
         df = df[(df.data.dt.year == ano)]
@@ -171,7 +171,7 @@ def le_dados(tipo,evento, estado,ano=None,data=None):
                     dados.loc[dados['data']==str(ano)+final,'semana_ano']=53
 
     if tipo == 'estacoes':
-        df = pd.read_csv('dados/dados_base.csv',header=None, low_memory=False)
+        df = pd.read_csv('https://raw.githubusercontent.com/mahideia/extremaera/master/dados/dados_base.csv',header=None, low_memory=False)
         df.columns=['data','sigla','evento','estacao','criterio']
         df.data = pd.to_datetime(df.data)
         if estado!='BR':
@@ -245,7 +245,7 @@ def plot_calendario(tipo,ano,estado):
     return fig
 
 def temp_prec(estacao,data):
-    dados = pd.read_csv(f'dados/diarios/{estacao}.csv',header=None)
+    dados = pd.read_csv(f'https://raw.githubusercontent.com/mahideia/extremaera/master/dados/diarios/{estacao}.csv',header=None)
     if estacao[0]=='A' or estacao[0]=='B' or estacao[0]=='F' or estacao[0]=='S':
         dados.columns=['data','hora','precipitacao','temperatura','temperatura_max','evento']
     else:
