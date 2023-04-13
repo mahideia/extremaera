@@ -246,7 +246,7 @@ def plot_calendario(tipo,ano,estado):
 
 def temp_prec(estacao,data):
     caminho_dados = f'https://raw.githubusercontent.com/mahideia/extremaera/master/dados/diarios/{estacao}.csv'
-    caminho_dados = caminho_dados.replace(' ','%20%')
+    caminho_dados = caminho_dados.replace(' ','%20')
     #caminho_dados = caminho_dados.replace(' ','%20%')
     dados = pd.read_csv(caminho_dados,header=None)
     if estacao[0]=='A' or estacao[0]=='B' or estacao[0]=='F' or estacao[0]=='S':
